@@ -1,0 +1,12 @@
+import cv2
+image=cv2.imread("../EP-12.3.25/img_1.png")
+gray=cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
+orb=cv2.ORB_create()
+keypoints, descriptors=orb.detectAndCompute(gray,None)
+orb_image=cv2.drawKeypoints(image,keypoints,None,color=(0,255,0),flags=0)
+edges=cv2.Canny(gray,100,200)
+cv2.imshow("original image",image)
+cv2.imshow("ORB image",orb_image)
+cv2.imshow("Edge detection",edges)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
