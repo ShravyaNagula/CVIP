@@ -36,15 +36,15 @@ salt_pepper_noisy_image = add_salt_and_pepper_noise(image, salt_prob=0.05, peppe
 # Apply Noise Removal Filters
 mean_filtered = cv2.blur(gaussian_noisy_image, (5, 5))  # Mean Filter
 gaussian_filtered = cv2.GaussianBlur(gaussian_noisy_image, (5, 5), 0)  # Gaussian Filter
-wiener_filtered = wiener(gaussian_noisy_image, (5, 5))  # Wiener Filter (Deblurring)
-wiener_filtered = np.clip(wiener_filtered, 0, 255).astype(np.uint8)
+restored_image = wiener(gaussian_noisy_image, (5, 5))  # Wiener Filter (Deblurring)
+restored_image = np.clip(wiener_filtered, 0, 255).astype(np.uint8)
 
 # Display results
 titles = [
     "Original", "Gaussian Noise", "Salt & Pepper Noise",
-    "Mean Filter", "Gaussian Filter", "Wiener Filter"
+    "Mean Filter", "Gaussian Filter", "Restored Image"
 ]
-images = [image, gaussian_noisy_image, salt_pepper_noisy_image, mean_filtered, gaussian_filtered, wiener_filtered]
+images = [image, gaussian_noisy_image, salt_pepper_noisy_image, mean_filtered, gaussian_filtered, restored_image]
 
 plt.figure(figsize=(12, 8))
 for i in range(6):
