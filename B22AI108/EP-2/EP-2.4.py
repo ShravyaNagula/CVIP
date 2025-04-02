@@ -8,7 +8,7 @@ else:
     bit_planes=[]
     for i in range(8):
         bit_plane=(image>>1)&1
-        bit_planes.append(bit_planes*255)
+        bit_planes.append(bit_plane*255)
     plt.figure(figsize=(12,6))
 for i in range(8):
     plt.subplot(2,4,i+1)
