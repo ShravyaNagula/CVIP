@@ -2,12 +2,12 @@ import cv2
 import numpy as np
 cap=cv2.videoCapture(0)
 if not cap.Opened():
-    print("Error")
+    print("Error: unable to access webcamera.")
 else:
     while True:
         ret, frame=cap.read()
         if not ret:
-            print("Error")
+            print("Error: failed to capture frame.")
             break
         hsv=cv2.cvtColor(frame,cv2.COLOR_BGR2HSV)
         lower_bound=np.array([30,50,50])
